@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Para ti Michi❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400&display=swap" rel="stylesheet">
+  <meta name="description" content="Ramo romántico animado - Feliz San Valentín">
+  <style>
+/* inlined style.css */
+:root {
+    --bg-color: #ffe6e9;
+    --stem-green: #548c46;
+    --stem-dark: #3a6330;
+    /* Colores de tulipanes */
+    --tulip-red: #ff3333;
+    --tulip-pink: #ff85a2;
+    --tulip-hotpink: #ff4d6d;
+    --tulip-light: #ffc2d1;
+    /* Color del lazo nuevo */
+    --bow-pink-light: #ff9eb5;
+    --bow-pink-dark: #ff7a9e;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #fff0f3, #ffccd5);
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+#particles-container {
+    position: absolute;
+    width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+}
+
+.main-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    justify-content: center;
+}
+
+.bouquet-wrapper {
+    position: relative;
+    width: 350px;
+    height: 480px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transform-origin: bottom center;
+    animation: floating 4s ease-in-out infinite;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bouquet-wrapper:active { transform: scale(0.95); }
+
+.glow-effect {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255,255,255,0) 70%);
+    top: -50px; left: -25px;
+    z-index: -1;
+    filter: blur(30px);
+}
+
+.stems-group {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100px; height: 250px;
+    z-index: 1;
+}
+
+.stem {
+    position: absolute;
+    bottom: 50px;
+    width: 12px;
+    background: linear-gradient(to right, var(--stem-dark), var(--stem-green));
+    border-radius: 20px;
+    transform-origin: bottom center;
+}
+
+.stem-1 { height: 280px; left: 10px; transform: rotate(-15deg); }
+.stem-2 { height: 260px; left: 30px; transform: rotate(-7deg); }
+.stem-3 { height: 300px; left: 50px; transform: rotate(0deg); z-index: 2; }
+.stem-4 { height: 260px; right: 30px; transform: rotate(7deg); }
+.stem-5 { height: 280px; right: 10px; transform: rotate(15deg); }
+.stem-6 { height: 270px; left: 70px; transform: rotate(8deg); }
+
+.leaves-group {
+    position: absolute;
+    bottom: 80px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.leaf {
+    position: absolute;
+    background: var(--stem-green);
+    width: 50px; height: 100px;
+    border-radius: 0 80% 0 80%;
+    box-shadow: inset 5px 0 10px rgba(0,0,0,0.1);
+}
+
+.leaf-1 { bottom: 0; left: -60px; transform: rotate(-30deg); }
+.leaf-2 { bottom: 20px; right: -50px; transform: rotate(30deg) scaleX(-1); }
+.leaf-3 { bottom: 40px; left: -40px; transform: rotate(-15deg) scale(0.8); }
+.leaf-4 { bottom: 30px; right: -30px; transform: rotate(15deg) scaleX(-1) scale(0.8); }
+
+.flowers-container {
+    position: absolute;
+    top: 20px; left: 0;
+    width: 100%; height: 300px;
+    z-index: 3;
+}
+
+.tulip { position: absolute; width: 70px; height: 90px; }
+.flower-head { position: relative; width: 100%; height: 100%; }
+.petal-left, .petal-right, .petal-center { position: absolute; bottom: 0; border-radius: 50% 50% 20% 20%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 3s ease-in-out; }
+.petal-left { width: 45px; height: 85px; left: 0; transform: rotate(-15deg); z-index: 1; }
+.petal-right { width: 45px; height: 85px; right: 0; transform: rotate(15deg); z-index: 1; }
+.petal-center { width: 50px; height: 90px; left: 10px; z-index: 2; transform: scale(0.95); }
+
+.pink .petal-left, .pink .petal-right { background: linear-gradient(to top, #c75b7a, var(--tulip-pink)); }
+.pink .petal-center { background: linear-gradient(to top, #b04663, #ffaabf); }
+.red .petal-left, .red .petal-right { background: linear-gradient(to top, #990000, var(--tulip-red)); }
+.red .petal-center { background: linear-gradient(to top, #800000, #ff4d4d); }
+.hotpink .petal-left, .hotpink .petal-right { background: linear-gradient(to top, #d63384, var(--tulip-hotpink)); }
+.hotpink .petal-center { background: linear-gradient(to top, #a61e61, #ff7597); }
+.lightpink .petal-left, .lightpink .petal-right { background: linear-gradient(to top, #e08e9f, var(--tulip-light)); }
+.lightpink .petal-center { background: linear-gradient(to top, #cc7a8b, #ffe0e9); }
+.main-red .petal-left, .main-red .petal-right { background: linear-gradient(to top, #8b0000, #ff1a1a); }
+.main-red .petal-center { background: linear-gradient(to top, #660000, #ff3333); }
+
+.t-1 { bottom: 40px; left: 20px; transform: rotate(-30deg); }
+.t-2 { bottom: 30px; right: 5px; transform: rotate(35deg); }
+.t-3 { bottom: 100px; left: 60px; transform: rotate(-10deg); }
+.t-4 { bottom: 120px; right: 70px; transform: rotate(10deg); }
+.t-5 { bottom: 150px; left: 50%; transform: translateX(-50%) rotate(0deg); z-index: 4; }
+.t-6 { bottom: 75px; right: 35px; transform: rotate(20deg); z-index: 3; }
+
+.big-bow-container { position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%); width: 120px; height: 100px; z-index: 6; }
+.bow-center { position: absolute; width: 35px; height: 30px; background: linear-gradient(to bottom right, var(--bow-pink-light), var(--bow-pink-dark)); border-radius: 40% 40% 40% 40%; top: 20px; left: 50%; transform: translateX(-50%); z-index: 8; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.bow-loop { position: absolute; width: 60px; height: 55px; background: linear-gradient(to right, var(--bow-pink-dark), var(--bow-pink-light)); top: 10px; z-index: 7; box-shadow: 0 3px 5px rgba(0,0,0,0.1); }
+.loop-left { left: -15px; border-radius: 50% 0 0 50%; transform: rotate(-15deg); background: linear-gradient(to right, var(--bow-pink-light), var(--bow-pink-dark)); }
+.loop-right { right: -15px; border-radius: 0 50% 50% 0; transform: rotate(15deg); }
+.bow-tail { position: absolute; width: 40px; height: 80px; background: linear-gradient(to bottom, var(--bow-pink-dark) 0%, var(--bow-pink-light) 100%); top: 45px; z-index: 6; }
+.tail-left { left: 10px; transform: rotate(20deg); border-radius: 0 0 0 10px; }
+.tail-right { right: 10px; transform: rotate(-20deg); border-radius: 0 0 10px 0; }
+
+.message-area { text-align: center; margin-top: 10px; }
+h1 { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: #d63031; margin: 0; text-shadow: 2px 2px 0px white; }
+.subtitle { font-size: 1.2rem; color: #636e72; margin-top: 5px; }
+.hidden-message { margin-top: 20px; font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #e84393; height: 40px; }
+
+@keyframes floating { 0% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(1deg); } 100% { transform: translateY(0px) rotate(0deg); } }
+@media (max-width: 600px) { .bouquet-wrapper { transform: scale(0.7); margin-bottom: -50px; } h1 { font-size: 2.5rem; } }
+
+/* Music toggle button */
+#music-toggle{
+    position: fixed; right:16px; bottom:18px; z-index:50; width:48px;height:48px;border-radius:50%;border:none;background:linear-gradient(180deg,#fff,#ffdfe8);box-shadow:0 6px 18px rgba(0,0,0,0.12);font-size:20px;cursor:pointer
+}
+#music-toggle.on{background:linear-gradient(180deg,#ff6f9f,#ff3b5e);color:white}
+#music-toggle:focus{outline:3px solid rgba(255,150,170,0.35)}
+
+  </style>
+</head>
+<body>
+
+  <div id="particles-container"></div>
+
+  <div class="main-container">
+      <div class="bouquet-wrapper" id="bouquet">
+          <div class="glow-effect"></div>
+
+          <div class="stems-group">
+              <div class="stem stem-1"></div>
+              <div class="stem stem-2"></div>
+              <div class="stem stem-3"></div>
+              <div class="stem stem-4"></div>
+              <div class="stem stem-5"></div>
+              <div class="stem stem-6"></div>
+          </div>
+
+          <div class="leaves-group">
+              <div class="leaf leaf-1"></div>
+              <div class="leaf leaf-2"></div>
+              <div class="leaf leaf-3"></div>
+              <div class="leaf leaf-4"></div>
+          </div>
+
+          <div class="flowers-container">
+              <div class="tulip pink t-1"><div class="flower-head"><div class="petal-left"></div><div class="petal-right"></div><div class="petal-center"></div></div></div>
+              <div class="tulip red t-2"><div class="flower-head"><div class="petal-left"></div><div class="petal-right"></div><div class="petal-center"></div></div></div>
+              <div class="tulip hotpink t-3"><div class="flower-head"><div class="petal-left"></div><div class="petal-right"></div><div class="petal-center"></div></div></div>
+              <div class="tulip lightpink t-4"><div class="flower-head"><div class="petal-left"></div><div class="petal-right"></div><div class="petal-center"></div></div></div>
+              <div class="tulip main-red t-5"><div class="flower-head"><div class="petal-left"></div><div class="petal-right"></div><div class="petal-center"></div></div></div>
+              <div class="tulip lightpink t-6"><div class="flower-head"><div class="petal-left"></div><div class="petal-right"></div><div class="petal-center"></div></div></div>
+          </div>
+
+          <div class="big-bow-container">
+              <div class="bow-loop loop-left"></div>
+              <div class="bow-loop loop-right"></div>
+              <div class="bow-center"></div>
+              <div class="bow-tail tail-left"></div>
+              <div class="bow-tail tail-right"></div>
+          </div>
+      </div>
+
+      <div class="message-area">
+          <h1>❤️ Feliz San Valentín ❤️</h1>
+          <p class="subtitle">Eres la flor más hermosa 🌷</p>
+          <div class="hidden-message" id="hidden-msg"></div>
+      </div>
+  </div>
+
+  <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <button id="music-toggle" aria-pressed="false" title="Reproducir/pausar música">♫</button>
+    <audio id="bg-audio" src="mi_musica.mp3" loop preload="auto"></audio>
+
+  <script>
+  // inlined script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. FONDO DE CORAZONES ---
+    const particlesContainer = document.getElementById('particles-container');
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '❤️';
+        heart.style.position = 'absolute';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        heart.style.animation = `floatUp ${Math.random() * 3 + 5}s linear forwards`;
+        particlesContainer.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 8000);
+    }
+    setInterval(createHeart, 400);
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = `@keyframes floatUp { to { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }`;
+    document.head.appendChild(styleSheet);
+
+    // --- 2. INTERACCIÓN DEL RAMO ---
+    const bouquet = document.getElementById('bouquet');
+    const hiddenMsg = document.getElementById('hidden-msg');
+    const audio = document.getElementById('click-sound');
+    let isRevealed = false;
+
+    // --- 3. MÚSICA DE FONDO (WebAudio ambient pad) ---
+    const musicToggle = document.getElementById('music-toggle');
+    let audioCtx = null, padGain = null, padOsc1 = null, padOsc2 = null, lfo = null, musicOn = false;
+
+    function startBackgroundPad(){
+        if(musicOn) return;
+        try{
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            padGain = audioCtx.createGain(); padGain.gain.value = 0.0001;
+            const filter = audioCtx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 1200;
+
+            padOsc1 = audioCtx.createOscillator(); padOsc1.type = 'sine'; padOsc1.frequency.value = 220;
+            padOsc2 = audioCtx.createOscillator(); padOsc2.type = 'sine'; padOsc2.frequency.value = 330;
+
+            lfo = audioCtx.createOscillator(); lfo.type = 'sine'; lfo.frequency.value = 0.12;
+            const lfoGain = audioCtx.createGain(); lfoGain.gain.value = 0.08;
+
+            padOsc1.connect(padGain); padOsc2.connect(padGain);
+            padGain.connect(filter); filter.connect(audioCtx.destination);
+
+            lfo.connect(lfoGain); lfoGain.connect(padGain.gain);
+
+            const now = audioCtx.currentTime;
+            padOsc1.start(now); padOsc2.start(now); lfo.start(now);
+            // fade in
+            padGain.gain.cancelScheduledValues(now);
+            padGain.gain.setValueAtTime(0.0001, now);
+            padGain.gain.exponentialRampToValueAtTime(0.06, now+2.5);
+
+            musicOn = true; musicToggle.setAttribute('aria-pressed','true'); musicToggle.classList.add('on');
+        }catch(e){ console.warn('WebAudio no disponible', e); }
+    }
+
+    function stopBackgroundPad(){
+        if(!musicOn || !audioCtx) return;
+        const now = audioCtx.currentTime;
+        padGain.gain.cancelScheduledValues(now);
+        padGain.gain.exponentialRampToValueAtTime(0.0001, now+1.2);
+        setTimeout(()=>{
+            try{ padOsc1.stop(); padOsc2.stop(); lfo.stop(); audioCtx.close(); }catch(e){}
+            audioCtx = null; musicOn = false; musicToggle.setAttribute('aria-pressed','false'); musicToggle.classList.remove('on');
+        }, 1400);
+    }
+
+    const bgAudio = document.getElementById('bg-audio');
+
+    musicToggle.addEventListener('click', ()=>{
+        // If user provided local audio file, prefer it (requires user gesture to start on mobile)
+        if(bgAudio && bgAudio.src){
+            if(bgAudio.paused){
+                bgAudio.volume = 0.6;
+                bgAudio.play().catch(()=>console.log('bgAudio play blocked'));
+                musicToggle.classList.add('on'); musicToggle.setAttribute('aria-pressed','true');
+            } else {
+                bgAudio.pause();
+                musicToggle.classList.remove('on'); musicToggle.setAttribute('aria-pressed','false');
+            }
+        } else {
+            // fallback to generated pad
+            if(!musicOn) startBackgroundPad(); else stopBackgroundPad();
+        }
+    });
+
+    bouquet.addEventListener('click', () => {
+        if (isRevealed) return;
+        isRevealed = true;
+        if(audio) {
+            audio.volume = 0.5;
+            audio.play().catch(() => console.log('Audio bloqueado por navegador'));
+        }
+        // Si hay audio de fondo local, iniciarlo con el gesto del usuario
+        if(bgAudio && bgAudio.paused){ bgAudio.volume = 0.6; bgAudio.play().catch(()=>{}); musicToggle.classList.add('on'); musicToggle.setAttribute('aria-pressed','true'); }
+        const flowers = document.querySelectorAll('.flower-head');
+        flowers.forEach(flower => {
+            flower.style.transform = "scale(1.1)";
+            setTimeout(() => flower.style.transform = "scale(1)", 300);
+        });
+
+        // Efecto Typing
+        const text = "ME ENCANTAS MUCHOOOO ❤️🌹";
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                hiddenMsg.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, 80);
+            }
+        }
+        type();
+    });
+});
+  </script>
+
+</body>
+</html>
